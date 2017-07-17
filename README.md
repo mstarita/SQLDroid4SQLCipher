@@ -9,6 +9,7 @@ Binary release of the Jdbc driver, sqldroid4SQLCipher.jar, is avalaible in the a
 ## Usage
 
 You can refer to the http://sqldroid.org for basic usage of the driver.
+
 To specify the encryption password of the database you need to set the password of jdbc connection.
 
 ## Building the Jdbc driver
@@ -16,8 +17,11 @@ To specify the encryption password of the database you need to set the password 
 Basically this is an Android Studio Project, so you can use this IDE to build the jdbc driver.
 
 In alternative you can use gradle to build the debug or release of the driver jar file.
+
 You can find the project module of the driver in the directory sqldroid4SQLCipher where you can launch gradle using one of the custom tasks:
+
 ```createDebugJar```
+
 ```createReleaseJar```
 
 ## The Sample Application
