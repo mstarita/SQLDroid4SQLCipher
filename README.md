@@ -26,4 +26,4 @@ You can find the project module of the driver in the directory sqldroid4SQLCiphe
 
 ## The Sample Application
 
-In the app directory you can find a very basic app that use flyway to manage an encrypted database.
+In the app directory you can find a very basic app that use flyway to manage an encrypted database using this jdbc driver.
