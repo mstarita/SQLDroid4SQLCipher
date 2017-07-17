@@ -1,6 +1,8 @@
 # SQLDroid4SQLCipher
 
-SQLDroid4SQLCipher is a JDBC driver for Android's encrypted sqlite database using SQLCipher (https://www.zetetic.net/sqlcipher/). This is bases on original SQLDroid v1.0.1 version. See http://sqldroid.org/.
+SQLDroid4SQLCipher is a JDBC driver for Android's encrypted sqlite database using SQLCipher (https://www.zetetic.net/sqlcipher/). 
+
+This is bases on original SQLDroid v1.0.1 version. See http://sqldroid.org/.
 
 ## Download
 
