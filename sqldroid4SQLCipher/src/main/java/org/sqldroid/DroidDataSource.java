@@ -14,22 +14,36 @@ import javax.sql.DataSource;
 public class DroidDataSource implements DataSource {
     Connection connection = null;    
     protected String description = "Android Sqlite Data Source";
-    protected String packageName;
-    protected String databaseName;  
+    protected String path;
+    protected String databaseName;
+    protected String password;
 
     public DroidDataSource() {
 
-    }        
-        
-    public DroidDataSource(String packageName, String databaseName) {
-      	setPackageName(packageName);
-       	setDatabaseName(databaseName);
     }
-        
+
+    public DroidDataSource(String path, String databaseName) {
+      	setPath(path);
+       	setDatabaseName(databaseName);
+        setPassword("");
+    }
+
+    public DroidDataSource(String path, String databaseName, String password) {
+        setPath(path);
+        setDatabaseName(databaseName);
+        setPassword(password);
+    }
+
     @Override
     public Connection getConnection() throws SQLException {
-      	String url = "jdbc:sqldroid:" + "/data/data/" + packageName + "/" + databaseName + ".db";
-        connection = new SQLDroidDriver().connect(url , new Properties());
+      	String url = "jdbc:sqldroid:" +
+                (this.path.endsWith("/") ? this.path : this.path + "/") +
+                databaseName;
+
+        Properties properties = new Properties();
+        properties.put("password", password);
+
+        connection = new SQLDroidDriver().connect(url , properties);
         return connection;
     }
 
@@ -76,13 +90,13 @@ public class DroidDataSource implements DataSource {
         description = desc;
     }
 
-    public String getPackageName() {
-     	return packageName;
+    public String getPath() {
+     	return path;
     }
 
-    public void setPackageName(String packageName) {
-     	this.packageName = packageName;
-    }                
+    public void setPath(String path) {
+     	this.path = path;
+    }
 
     public String getDatabaseName() {
     	return databaseName;
@@ -90,8 +104,16 @@ public class DroidDataSource implements DataSource {
 
     public void setDatabaseName(String databaseName) {
      	this.databaseName = databaseName;
-    }             
-        
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public boolean isWrapperFor(Class<?> iface) throws SQLException {
       return iface != null && iface.isAssignableFrom(getClass());
